@@ -39,9 +39,11 @@
     if (year) year.textContent = String(new Date().getFullYear());
 
     /*
-     * Страница чуть уезжает перед переходом. Ссылки остаются обычными,
+     * Страница мягко растворяется перед переходом. Ссылки остаются обычными,
      * поэтому при отключённом JS и при Ctrl+клике всё работает как обычно.
      */
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+
     Array.prototype.forEach.call(document.querySelectorAll('a.card'), function (link) {
         link.addEventListener('click', function (event) {
             if (event.defaultPrevented || event.metaKey || event.ctrlKey ||
@@ -54,7 +56,7 @@
             document.body.classList.add('is-leaving');
             window.setTimeout(function () {
                 window.location.href = href;
-            }, 230);
+            }, calm.matches ? 0 : 430);
         });
     });
 })();

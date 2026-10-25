@@ -1,37 +1,37 @@
 <!doctype html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>НКСЭ — расписание и библиотека</title>
     <meta name="description" content="НКСЭ — Новороссийский колледж строительства и экономики: расписание занятий и электронная библиотека.">
-    <meta name="theme-color" content="#f7f4ed">
+    <meta name="theme-color" content="#08080a">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
 
     <script>
         /*
-         * Тема до первой отрисовки: иначе страница мигает светлым
-         * и только потом уезжает в тёмную.
+         * Тема до первой отрисовки: по умолчанию тёмная,
+         * светлая включается только если её выбрали вручную.
          */
         (function () {
             try {
-                var saved = localStorage.getItem('hub.theme');
-                if (saved === 'dark' || saved === 'light') {
-                    document.documentElement.setAttribute('data-theme', saved);
-                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'dark');
+                if (localStorage.getItem('hub.theme') === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
                 }
-            } catch (e) { /* приватный режим - светлая тема */ }
+            } catch (e) { /* приватный режим - тёмная */ }
         })();
     </script>
 </head>
 <body>
 
 <div class="bg" aria-hidden="true">
-    <span class="orb orb-schedule"></span>
-    <span class="orb orb-library"></span>
+    <span class="glow glow-warm"></span>
+    <span class="glow glow-cold"></span>
+    <span class="shade"></span>
 </div>
+
+<div class="grain" aria-hidden="true"></div>
 
 <main class="wrap">
 
@@ -56,10 +56,10 @@
     </header>
 
     <section class="hero">
-        <p class="eyebrow">Личное пространство</p>
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Личное пространство</p>
         <h1>Всё <em>под рукой</em></h1>
         <p class="lede">
-            Расписание занятий и учебники в одном месте.
+            Расписание пар и учебники — в одном месте.
             Выбери, что открыть.
         </p>
     </section>
@@ -67,9 +67,11 @@
     <nav class="choices" aria-label="Разделы">
 
         <a class="card card-schedule" href="/mypars/">
+            <span class="strap" aria-hidden="true"></span>
+
             <span class="card-top">
                 <span class="badge" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/>
                         <path d="M3.5 9.6h17M8 3.2v3.4M16 3.2v3.4"/>
                         <path d="M7.6 12.9h2.2M13.9 12.9h2.2M7.6 16.6h2.2M13.9 16.6h2.2"/>
@@ -79,7 +81,7 @@
             </span>
 
             <span class="card-main">
-                <span class="kicker">НКСЭ</span>
+                <span class="kicker">Учёба</span>
                 <span class="card-title">Расписание</span>
                 <span class="card-note">Пары на сегодня, звонки и замены</span>
             </span>
@@ -105,9 +107,11 @@
         </a>
 
         <a class="card card-library" href="/mypars/library/">
+            <span class="strap" aria-hidden="true"></span>
+
             <span class="card-top">
                 <span class="badge" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 4.8A2.3 2.3 0 0 1 6.3 2.5H19v17.2H6.3A2.3 2.3 0 0 0 4 22z"/>
                         <path d="M4 4.8V22M19 19.7v2.2H6.3"/>
                     </svg>

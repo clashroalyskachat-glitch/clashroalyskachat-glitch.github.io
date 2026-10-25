@@ -12,7 +12,7 @@
 
     function paint(theme) {
         root.setAttribute('data-theme', theme);
-        if (meta) meta.setAttribute('content', theme === 'dark' ? '#100f0d' : '#f7f4ed');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#08080a' : '#e9e5dd');
     }
 
     if (themeBtn) {

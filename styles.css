@@ -251,9 +251,10 @@ svg { display: block; }
 
 .brand-name {
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.08rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    letter-spacing: .02em;
+    letter-spacing: .03em;
+    line-height: 1;
     background: linear-gradient(102deg, #f2dcbe 6%, #d7a873 42%, #b47c48 78%, #9a6436 100%);
     -webkit-background-clip: text;
     background-clip: text;
